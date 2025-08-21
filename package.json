@@ -1,0 +1,32 @@
+{
+	"name": "tree-app-test",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev -p 3000 --turbopack",
+		"build": "npm run lint-dev && next build --turbopack",
+		"start": "next start",
+		"lint": "tsc --noEmit --noErrorTruncation && biome check --write --unsafe",
+		"lint-dev": "biome check --write --error-on-warnings --linter-enabled=true",
+		"prepare": "husky install"
+	},
+	"dependencies": {
+		"@emotion/react": "11.14.0",
+		"@emotion/styled": "11.14.1",
+		"@mui/icons-material": "7.3.1",
+		"@mui/material": "7.3.1",
+		"@xyflow/react": "^12.8.4",
+		"lodash": "^4.17.21",
+		"next": "15.5.0",
+		"react": "19.1.0",
+		"react-dom": "19.1.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.0",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"husky": "9.0.11",
+		"typescript": "^5"
+	}
+}

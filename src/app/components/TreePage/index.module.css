@@ -1,0 +1,11 @@
+.tab {
+	font-weight: 700 !important;
+	width: 100%;
+	text-transform: capitalize !important;
+}
+.flow_wrapper {
+	width: 100%;
+	height: calc(100vh - 100px);
+	border-radius: 8px;
+	border: 1px solid lightgrey;
+}
