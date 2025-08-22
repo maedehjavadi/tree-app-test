@@ -1,8 +1,3 @@
-import ContentCopy from "@mui/icons-material/ContentCopy";
-import ContentCut from "@mui/icons-material/ContentCut";
-import ContentPaste from "@mui/icons-material/ContentPaste";
-import Delete from "@mui/icons-material/Delete";
-import PlusOne from "@mui/icons-material/PlusOne";
 import {
 	Accordion,
 	AccordionDetails,
@@ -15,49 +10,24 @@ import type React from "react";
 import { useState } from "react";
 import ContextMenu from "src/app/components/TreePage/components/CustomNode/components/ContextMenu";
 import type { ActionButton, TreeNode } from "@/type/tree";
+import classes from "../../index.module.css";
 
 export default function CustomNode(props: {
 	node: TreeNode;
-	onCopyNode: (node: TreeNode) => void;
-	onCutNode: (node: TreeNode) => void;
-	onPasteNode: (node: TreeNode) => void;
-	onDeleteNode: (node: TreeNode) => void;
-	onAddNode: (node: TreeNode) => void;
 	defaultExpanded: boolean;
-	copied: boolean;
+	menuItems: ActionButton[];
 }) {
+	const [expanded, setExpanded] = useState<string | false>(false);
+	const defaultExpanded = !!expanded || props.defaultExpanded;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const menuItems: ActionButton[] = [
-		{
-			label: "Cut",
-			onClick: () => props.onCutNode?.(props.node),
-			icon: <ContentCut fontSize="small" />,
-		},
-		{
-			label: "Copy",
-			onClick: () => props.onCopyNode?.(props.node),
-			icon: <ContentCopy fontSize="small" />,
-		},
-		{
-			label: "Paste",
-			onClick: () => props.onPasteNode?.(props.node),
-			icon: <ContentPaste fontSize="small" />,
-			disabled: !props.copied,
-		},
-		{
-			label: "Delete",
-			onClick: () => props.onDeleteNode?.(props.node),
-			icon: <Delete fontSize="small" />,
-			disabled: !!props.node.children?.length,
-		},
-		{
-			label: "Add Node",
-			onClick: () => props.onAddNode?.(props.node),
-			icon: <PlusOne fontSize="small" />,
-		},
-	];
 
+	const handleToggleExpand =
+		(panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
+			if (props.node.children?.length) {
+				setExpanded(isExpanded ? panel : false);
+			}
+		};
 	const handleContextMenu = (event: React.MouseEvent<HTMLDivElement>) => {
 		event.preventDefault();
 		event.stopPropagation();
@@ -71,20 +41,22 @@ export default function CustomNode(props: {
 		<Box>
 			<Accordion
 				sx={{ boxShadow: "unset !important" }}
-				defaultExpanded={props.defaultExpanded}
+				expanded={defaultExpanded}
+				onChange={handleToggleExpand(props.node.id)}
 			>
 				<AccordionSummary id={props.node.id} aria-controls="panel-content">
 					<Stack direction={"row"} alignItems={"center"}>
 						{!props.defaultExpanded && (
-							<Box sx={{ width: 40, height: 2, backgroundColor: "gray" }} />
+							<Box
+								sx={{ width: 40, height: 2, backgroundColor: "lightcoral" }}
+							/>
 						)}
 						<Typography
 							fontSize={14}
 							onContextMenu={handleContextMenu}
 							px={3}
 							py={1}
-							border={1}
-							borderRadius={2}
+							className={defaultExpanded ? classes.expanded_node : classes.node}
 							borderColor={"lightgrey"}
 							aria-controls={open ? "basic-menu" : undefined}
 							aria-haspopup="true"
@@ -102,12 +74,7 @@ export default function CustomNode(props: {
 									key={childNode.id}
 									node={childNode}
 									defaultExpanded={false}
-									onPasteNode={props.onPasteNode}
-									onDeleteNode={props.onDeleteNode}
-									onAddNode={props.onAddNode}
-									onCutNode={props.onCutNode}
-									onCopyNode={props.onCopyNode}
-									copied={props.copied}
+									menuItems={props.menuItems}
 								/>
 							))}
 						</Stack>
@@ -115,11 +82,11 @@ export default function CustomNode(props: {
 				)}
 			</Accordion>
 			<ContextMenu
-				id={props.node.id}
+				node={props.node}
 				opened={open}
 				onClose={handleClose}
 				anchorEl={anchorEl}
-				menuActions={menuItems}
+				menuActions={props.menuItems}
 			/>
 		</Box>
 	);

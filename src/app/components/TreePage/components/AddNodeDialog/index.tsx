@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 	TextField,
 } from "@mui/material";
-import { startTransition, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 
 export type Props = {
 	opened: boolean;
@@ -15,6 +15,9 @@ export type Props = {
 };
 export default function AddNodeDialog(props: Props) {
 	const [label, setLabel] = useState<string>("");
+	useEffect(() => {
+		return () => setLabel("");
+	}, []);
 	return (
 		<Dialog open={props.opened} onClose={props.onClose}>
 			<DialogTitle>Add New Node</DialogTitle>

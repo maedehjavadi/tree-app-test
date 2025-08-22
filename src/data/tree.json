@@ -1,63 +1,57 @@
 [
 	{
-		"id": "0",
+		"id": "n1",
 		"label": "Root",
+		"expanded": "true",
 		"children": [
 			{
-				"id": "1",
-				"label": "Node 1",
+				"id": "n11",
+				"label": "Node",
+				"expanded": "true",
 				"children": [
 					{
-						"id": "1-1",
-						"label": "Child 1-1",
+						"id": "n111",
+						"label": "Node",
 						"children": [
 							{
-								"id": "1-1-1",
-								"label": "Child 1-1-1"
+								"id": "n1111",
+								"label": "Node"
 							},
 							{
-								"id": "1-1-2",
-								"label": "Child 1-1-2"
+								"id": "n1112",
+								"label": "Node"
 							}
 						]
 					},
 					{
-						"id": "1-2",
-						"label": "Child 1-2"
+						"id": "n112",
+						"label": "Node"
 					}
 				]
 			},
 			{
-				"id": "2",
-				"label": "Node 2"
+				"id": "n12",
+				"label": "Node"
 			},
 			{
-				"id": "3",
-				"label": "Node 3"
+				"id": "n13",
+				"label": "Node"
 			},
 			{
-				"id": "4",
-				"label": "Node 4"
+				"id": "n14",
+				"label": "Node"
 			},
 			{
-				"id": "5",
-				"label": "Node 5"
+				"id": "n15",
+				"label": "Node"
 			},
 			{
-				"id": "6",
-				"label": "Node 6"
+				"id": "n16",
+				"label": "Node"
 			},
 			{
-				"id": "7",
-				"label": "Node 7"
-			},
-			{
-				"id": "8",
-				"label": "Node 8"
-			},
-			{
-				"id": "9",
-				"label": "Node 9"
+				"id": "n17",
+				"label": "Node"
 			}
 		]
 	}

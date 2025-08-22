@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 export type TreeNode = {
 	id: string;
 	label: string;
+	expanded?: boolean;
 	children?: TreeNode[];
 };
 export interface TabPanelProps {
@@ -13,7 +14,14 @@ export interface TabPanelProps {
 }
 export type ActionButton = {
 	label: string;
-	onClick: VoidFunction;
+	onClick: (node: TreeNode) => void;
 	icon: ReactNode;
 	disabled?: boolean;
+};
+
+export type DefaultNodeData = {
+	node: TreeNode;
+	menu: ActionButton[];
+	isExpanded: boolean;
+	label: string;
 };

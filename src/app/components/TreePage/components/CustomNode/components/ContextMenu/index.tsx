@@ -4,35 +4,39 @@ import {
 	Menu,
 	MenuItem,
 	MenuList,
+	type PopoverOrigin,
 	Typography,
 } from "@mui/material";
-import type { ActionButton } from "@/type/tree";
+import type { ActionButton, TreeNode } from "@/type/tree";
 
 type Props = {
-	id: string;
+	node: TreeNode;
 	opened: boolean;
 	onClose: VoidFunction;
 	anchorEl?: HTMLElement | null;
 	menuActions: ActionButton[];
+	menuPosition?: PopoverOrigin;
 };
 export default function ContextMenu(props: Props) {
 	return (
 		<Menu
-			id={`context-menu ${props.id}`}
+			id={`context-menu ${props.node.id}`}
 			anchorEl={props.anchorEl}
 			open={props.opened}
 			onClose={props.onClose}
-			anchorOrigin={{
-				vertical: "top",
-				horizontal: "left",
-			}}
+			anchorOrigin={
+				props.menuPosition ?? {
+					vertical: "top",
+					horizontal: "left",
+				}
+			}
 		>
 			<MenuList sx={{ padding: 0 }}>
 				{props.menuActions.map((item) => (
 					<MenuItem
 						key={item.label}
 						disabled={item.disabled}
-						onClick={item.onClick}
+						onClick={() => item.onClick(props.node)}
 					>
 						<ListItemIcon>{item.icon}</ListItemIcon>
 						<ListItemText>

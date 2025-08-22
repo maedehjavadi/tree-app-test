@@ -5,7 +5,29 @@
 }
 .flow_wrapper {
 	width: 100%;
-	height: calc(100vh - 100px);
+	height: calc(100vh - 150px);
 	border-radius: 8px;
 	border: 1px solid lightgrey;
+}
+
+.node {
+	width: 100px;
+	height: 60px;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid lightcoral;
+	background-color: linen;
+}
+
+.expanded_node {
+	border: 1px solid linen;
+	background-color: lightcoral;
+	width: 100px;
+	height: 60px;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

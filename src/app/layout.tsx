@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ReactFlowProvider } from "@xyflow/react";
 import type { ReactNode } from "react";
 import MaterialThemeProvider from "@/providers/MaterialThemeProvider";
+import "@xyflow/react/dist/style.css";
 
 export const metadata: Metadata = {
 	title: "TreePage App Test",
@@ -16,7 +18,9 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<MaterialThemeProvider>{children}</MaterialThemeProvider>
+				<MaterialThemeProvider>
+					<ReactFlowProvider>{children}</ReactFlowProvider>
+				</MaterialThemeProvider>
 			</body>
 		</html>
 	);
