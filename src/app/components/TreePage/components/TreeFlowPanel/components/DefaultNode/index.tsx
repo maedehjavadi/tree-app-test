@@ -8,6 +8,7 @@ import ContextMenu from "@/app/components/TreePage/components/CustomNode/compone
 import type {DefaultNodeData} from "@/type/tree";
 import classes from "../../../../index.module.css";
 
+// @ts-ignore
 export default function DefaultNode(props: NodeProps<DefaultNodeData>) {
 	const { data, positionAbsoluteX, positionAbsoluteY, id } = props;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -33,16 +34,20 @@ export default function DefaultNode(props: NodeProps<DefaultNodeData>) {
 			<Box
 				onClick={handleToggle}
 				onContextMenu={handleContextMenu}
+	// @ts-ignore
 				className={data?.node.expanded ? classes.expanded_node : classes.node}
 			>
+	{/*// @ts-ignore*/}
 				{data?.label}
 			</Box>
 
 			<ContextMenu
+	// @ts-ignore
 				node={data?.node}
+	// @ts-ignore
+				menuActions={data?.menu}
 				opened={open}
 				onClose={handleClose}
-				menuActions={data?.menu}
 				menuPosition={{
 					vertical: positionAbsoluteY,
 					horizontal: positionAbsoluteX,
