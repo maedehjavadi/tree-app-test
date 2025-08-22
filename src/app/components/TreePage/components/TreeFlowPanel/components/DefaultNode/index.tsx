@@ -13,7 +13,6 @@ export default function DefaultNode(props: NodeProps<DefaultNodeData>) {
 	const { data, positionAbsoluteX, positionAbsoluteY, id } = props;
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
-	const { setNodes } = useReactFlow();
 
 	const handleClose = () => {
 		setAnchorEl(null);
