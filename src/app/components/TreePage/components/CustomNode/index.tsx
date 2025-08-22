@@ -7,7 +7,7 @@ import {
 	Typography,
 } from "@mui/material";
 import type React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContextMenu from "src/app/components/TreePage/components/CustomNode/components/ContextMenu";
 import type { ActionButton, TreeNode } from "@/type/tree";
 import classes from "../../index.module.css";
@@ -37,6 +37,13 @@ export default function CustomNode(props: {
 		setAnchorEl(null);
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <update>
+	useEffect(() => {
+		if (props.node.expanded) {
+			handleToggleExpand(props.node.id);
+		}
+	}, [props.node.expanded]);
+
 	return (
 		<Box>
 			<Accordion
@@ -62,7 +69,7 @@ export default function CustomNode(props: {
 							aria-haspopup="true"
 							aria-expanded={open ? "true" : undefined}
 						>
-							{props.node.label}
+							{props.node.label} {props.node.id}
 						</Typography>
 					</Stack>
 				</AccordionSummary>

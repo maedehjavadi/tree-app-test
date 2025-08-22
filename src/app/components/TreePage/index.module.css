@@ -11,7 +11,8 @@
 }
 
 .node {
-	width: 100px;
+	width: fit-content;
+	max-width: 250px;
 	height: 60px;
 	border-radius: 1rem;
 	display: flex;
@@ -19,15 +20,24 @@
 	justify-content: center;
 	border: 1px solid lightcoral;
 	background-color: linen;
+	text-align: center;
+	text-wrap: wrap;
+	font-size: 14px;
+	padding-inline: 24px;
 }
 
 .expanded_node {
+	max-width: 250px;
 	border: 1px solid linen;
 	background-color: lightcoral;
-	width: 100px;
+	width: fit-content;
 	height: 60px;
 	border-radius: 1rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-wrap: wrap;
+	text-align: center;
+	font-size: 14px;
+	padding-inline: 2rem;
 }

@@ -22,6 +22,6 @@ export type ActionButton = {
 export type DefaultNodeData = {
 	node: TreeNode;
 	menu: ActionButton[];
-	isExpanded: boolean;
+	expanded?: boolean;
 	label: string;
 };

@@ -13,6 +13,7 @@ import classes from "./index.module.css";
 
 export default function TreePage() {
 	const theme = useTheme();
+	const [value, setValue] = useState(0);
 	const {
 		treeData,
 		loading,
@@ -21,7 +22,6 @@ export default function TreePage() {
 		handleCloseDialog,
 		menuItems,
 	} = useNodeContextMenu();
-	const [value, setValue] = useState(0);
 
 	const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue);

@@ -75,10 +75,9 @@ export function flattenTree(
 			id: node.id,
 			type: "custom",
 			data: {
-				label: `${node.label} ${index + 1}`,
+				label: `${node.label} ${node.id}`,
 				node,
 				menu,
-				root: index === 0,
 			},
 			position: { x: depth * 220, y: index * 100 },
 		});
@@ -104,4 +103,14 @@ export function flattenTree(
 	});
 
 	return { nodes, edges };
+}
+
+export function toggleExpand(tree: TreeNode[], id: string): TreeNode[] {
+	return tree.map((n) =>
+		n.id === id
+			? { ...n, expanded: !n.expanded }
+			: n.children
+				? { ...n, children: toggleExpand(n.children, id) }
+				: n
+	);
 }

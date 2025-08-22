@@ -2,12 +2,10 @@
 	{
 		"id": "n1",
 		"label": "Root",
-		"expanded": "true",
 		"children": [
 			{
 				"id": "n11",
 				"label": "Node",
-				"expanded": "true",
 				"children": [
 					{
 						"id": "n111",

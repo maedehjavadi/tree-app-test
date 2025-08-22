@@ -51,6 +51,7 @@ export function useNodeContextMenu() {
 		}
 	};
 	const handleDeleteNode = (n: TreeNode) => {
+		setTargetNode(n);
 		setTreeData((prev) => removeNode(prev, n.id));
 	};
 	const handleCloseDialog = () => {
@@ -80,13 +81,13 @@ export function useNodeContextMenu() {
 			label: "Paste",
 			onClick: handlePasteNode,
 			icon: <ContentPaste fontSize="small" />,
-			// disabled: !copiedNode,
+			disabled: !copiedNode,
 		},
 		{
 			label: "Delete",
 			onClick: handleDeleteNode,
 			icon: <Delete fontSize="small" />,
-			// disabled: !!params.node.children?.length,
+			disabled: !!targetNode?.children?.length,
 		},
 		{
 			label: "Add Node",
@@ -100,6 +101,7 @@ export function useNodeContextMenu() {
 		handleCloseDialog,
 		handleAddNode,
 		treeData,
+		setTreeData,
 		loading,
 	};
 }
