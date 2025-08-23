@@ -11,6 +11,8 @@ import classes from "../../../../index.module.css";
 // @ts-expect-error
 export default function DefaultNode(props: NodeProps<DefaultNodeData>) {
 	const { data, positionAbsoluteX, positionAbsoluteY } = props;
+	const { node, label, menu } = data as DefaultNodeData;
+
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 
@@ -27,18 +29,14 @@ export default function DefaultNode(props: NodeProps<DefaultNodeData>) {
 		<Box>
 			<Box
 				onContextMenu={handleContextMenu}
-				// @ts-expect-error
-				className={data?.node.expanded ? classes.expanded_node : classes.node}
+				className={node.expanded ? classes.expanded_node : classes.node}
 			>
-				{/*// @ts-ignore*/}
-				{data?.label}
+				{label}
 			</Box>
 
 			<ContextMenu
-				// @ts-expect-error
-				node={data?.node}
-				// @ts-expect-error
-				menuActions={data?.menu}
+				node={node}
+				menuActions={menu}
 				opened={open}
 				onClose={handleClose}
 				menuPosition={{
