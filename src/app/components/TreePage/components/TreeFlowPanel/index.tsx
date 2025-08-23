@@ -12,7 +12,7 @@ import {
 	useEdgesState,
 	useNodesState,
 } from "@xyflow/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import DefaultNode from "@/app/components/TreePage/components/TreeFlowPanel/components/DefaultNode";
 import { flattenTree } from "@/app/components/TreePage/index.helper";
 import classes from "@/app/components/TreePage/index.module.css";

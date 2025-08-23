@@ -111,6 +111,6 @@ export function toggleExpand(tree: TreeNode[], id: string): TreeNode[] {
 			? { ...n, expanded: !n.expanded }
 			: n.children
 				? { ...n, children: toggleExpand(n.children, id) }
-				: n
+				: n,
 	);
 }
